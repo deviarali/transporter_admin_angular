@@ -1,20 +1,16 @@
-
-
-import {UserVo} from '../models/user-vo';
-import {TripDetailsVo} from '../models/trip-details-vo';
+import { UserVo } from '../models/user-vo';
+import { TripDetailsVo } from '../models/trip-details-vo';
 
 export class CustomerDetailsVo {
+  id: number;
 
-   id : number;
+  addressState: string;
 
-   addressState : string;
+  addressZipcode: string;
 
-   addressZipcode : string;
+  dateofbirth: Date;
 
-   dateofbirth:Date;
+  user: UserVo;
 
-   user:UserVo;
-
-   tripDetailsVoList:TripDetailsVo;
-   
+  tripDetailsVoList: TripDetailsVo[];
 }

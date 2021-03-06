@@ -1,58 +1,57 @@
+import { UserVo } from '../models/user-vo';
 
+import { VehicleDetailsVo } from '../models/vehicle-details-vo';
 
-import {UserVo} from '../models/user-vo';
-import {VehicleDetailsVo} from '../models/vehicle-details-vo';
-import {TripDetailsVo} from '../models/trip-details-vo';
+import { TripDetailsVo } from '../models/trip-details-vo';
 
 export class DriverDetailsVo {
-id:number;
+  id: number;
 
-	addressCity:string;
+  addressCity: string;
 
-	addressState:string;
+  addressState: string;
 
-	addressStreet:string;
+  addressStreet: string;
 
-	addressZipcode:string;
+  addressZipcode: string;
 
-	createdOn:Date;
+  createdOn: Date;
 
-	dateofbirth:Date;
+  dateofbirth: Date;
 
-	driverDocuments:string;
+  driverDocuments: string;
 
-	driverVerificationPendingReason:string;
+  driverVerificationPendingReason: string;
 
-	driverVerificationStatus:string;
+  driverVerificationStatus: string;
 
-	drivername:string;
+  drivername: string;
 
-	onRoad:number;
+  onRoad: number;
 
-	ratings:string;
+  ratings: string;
 
-	transportType:string;
+  transportType: string;
 
-	 createdBy:UserVo;
+  createdBy: UserVo;
 
-	 user:UserVo;
+  user: UserVo;
 
-	 verifedBy:UserVo;
+  verifedBy: UserVo;
 
-	vehicleDetailsVoList:VehicleDetailsVo;
+  vehicleDetailsVoList: VehicleDetailsVo[];
 
-	tripDetailsVoList:TripDetailsVo;
+  tripDetailsVoList: TripDetailsVo[];
 
-	currentLattitude:number;
+  currentLattitude: number;
 
-	currentLongitude:number;
-	
-	adharcardPictureUrl:string;
-	
-	drivingLicencePictureUrl:string;
-	
-	mobileNumber:string;
-		
-	ridingStatus:number;
+  currentLongitude: number;
 
+  adharcardPictureUrl: string;
+
+  drivingLicencePictureUrl: string;
+
+  mobileNumber: string;
+
+  ridingStatus: number;
 }
