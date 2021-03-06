@@ -1,0 +1,25 @@
+<h1 class="mt-4">Customers</h1>
+<ol class="breadcrumb mb-4">
+    <li class="breadcrumb-item active">Customers</li>
+</ol>
+
+<div class="d-flex justify-content-between">
+    <div class="heading5">List of Customers</div>
+    <div>
+        <a routerLink="/create-customer">Create Customer</a>
+    </div>
+</div>
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <th>First Name</th>
+            <th>Email</th>
+            <th>Mobile Number</th>
+        </tr>
+        <tr *ngFor="let customer of customers">
+            <td>{{customer.user.firstName}}</td>
+            <td>{{customer.user.emailId}}</td>
+            <td>{{customer.user.mobileNumber}}</td>
+        </tr>
+    </table>
+</div>

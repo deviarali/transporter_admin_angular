@@ -1,0 +1,20 @@
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">Admin Dashboard</a>
+    <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" (click)="toggleNavigation()"><i
+            class="fa fa-bars"></i></button>
+    
+    <!-- user dropdown goes here -->
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle pointer" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" (click)="showUserDropdown()"><i class="fa fa-user fa-fw"></i></a>
+            <div class="dropdown-menu dropdown-menu-right" [class.show]="isDropdownClicked"
+                aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#">Activity Log</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="login.html">Logout</a>
+            </div>
+        </li>
+    </ul>
+</nav>
