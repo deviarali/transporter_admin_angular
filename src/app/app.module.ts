@@ -24,6 +24,7 @@ import { EmployeeRightsComponent } from './components/employee-rights/employee-r
 import { CreateVehicleComponent } from './components/create-vehicle/create-vehicle.component';
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CreateDriverComponent } from './components/create-driver/create-driver.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path: 'coupon', component: CouponComponent},
   {path: 'promotions', component: PromotionsComponent},
   {path: 'employee', component: EmployeeComponent},
+  {path: 'create-driver', component: CreateDriverComponent},
   {path: 'employee-rights', component: EmployeeRightsComponent},
   {path: '**', redirectTo: '/dashboard', pathMatch: 'full'}
 ];
@@ -65,7 +67,8 @@ const routes: Routes = [
     EmployeeComponent,
     EmployeeRightsComponent,
     CreateVehicleComponent,
-    CreateCustomerComponent
+    CreateCustomerComponent,
+    CreateDriverComponent
   ],
   imports: [
     BrowserModule,
