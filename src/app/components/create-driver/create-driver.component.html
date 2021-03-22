@@ -6,7 +6,6 @@
         <a routerLink="/drivers">Return to drivers</a>
     </div>
 </div>
-
 <div>
     <form [formGroup]="driverForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
@@ -52,6 +51,34 @@
                     <div *ngIf="f.mobileNumber.errors.maxlength">Mobile number must be 10 digits</div>
                 </div>
             </div>
+            <!--<div class="form-group">
+                <label>State</label>
+                <input type="text" formControlName="mobileNumber" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>City</label>
+                <input type="text" formControlName="mobileNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" />
+            </div>
+            <div class="form-group">
+                <label>Pin code</label>
+                <input type="text" formControlName="mobileNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" />
+            </div>
+            <div class="form-group">
+                <label>Street1</label>
+                <input type="text" formControlName="mobileNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" />
+            </div>
+            <div class="form-group">
+                <label>Street2</label>
+                <input type="text" formControlName="mobileNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" />
+            </div> -->
+        </div>
+        <div>
+            <label class="btn btn-default">
+                <input type="file" (change)="selectFile($event)" />
+              </label>
+              <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">
+                Upload
+              </button>
         </div>
         <div class="form-group">
             <button class="btn btn-primary">Register</button>

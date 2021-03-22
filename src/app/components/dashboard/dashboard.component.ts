@@ -11,5 +11,25 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  public flag: boolean = false;
+  
+  public showMore: boolean = false;
+  public showMoreGoods: boolean = false;
+  public showMoreEmployees: boolean = false;
+  userName = localStorage.getItem('userName')
+
+  showMoreItems = (text) => {
+    if (text === 'users') {
+      this.showMore = !this.showMore;
+    }else if (text === 'goods'){
+      this.showMoreGoods = !this.showMoreGoods;
+    } else if (text === 'employees') {
+      this.showMoreEmployees = !this.showMoreEmployees;
+    }
+  }
+
+  toggleSidebar = () => {
+    this.flag = !this.flag;
+  }
 
 }
