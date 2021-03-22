@@ -3,10 +3,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from "@angular/router";
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
+import { MatTabsModule } from '@angular/material/tabs';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { DashboardTotalReadingComponent } from './components/dashboard-total-reading/dashboard.total.reading.component';
+import { DashboardTopReadingComponent } from './components/dashboard-top-reading/dashboard.top.reading.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CustomersComponent } from './components/customers/customers.component';
 import { DriversComponent } from './components/drivers/drivers.component';
@@ -25,9 +28,15 @@ import { CreateVehicleComponent } from './components/create-vehicle/create-vehic
 import { CreateCustomerComponent } from './components/create-customer/create-customer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CreateDriverComponent } from './components/create-driver/create-driver.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material.module';
+import {DataTablesModule} from 'angular-datatables';
+import {MatIconModule} from '@angular/material/icon';
+import { ChartsModule } from 'ng2-charts';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
+  // {path: 'dashboardd', component: DashboardTotalReadingComponent},
   {path: 'customers', component: CustomersComponent},
   {path: 'create-customer', component: CreateCustomerComponent},
   {path: 'drivers', component: DriversComponent},
@@ -52,6 +61,8 @@ const routes: Routes = [
     AppComponent,
     HeaderComponent,
     DashboardComponent,
+    DashboardTotalReadingComponent,
+    DashboardTopReadingComponent,
     FooterComponent,
     CustomersComponent,
     DriversComponent,
@@ -75,7 +86,13 @@ const routes: Routes = [
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes),
-    NgbModule
+    NgbModule,
+    MatTabsModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    DataTablesModule,
+    MatIconModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

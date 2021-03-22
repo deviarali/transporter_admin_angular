@@ -1,0 +1,118 @@
+<div class="top-registered-div">
+    <div class="top-registered-data dashboard-card">
+        <div class="dashboard-card-label mb-2">
+            <label>Top Earners</label>
+        </div>
+        <div class="dashboard-card-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Name</th>
+                        <th>Rides</th>
+                        <th>Earned(INR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let topEarner of topEarners">
+                        <td>{{topEarner.slNo}}</td>
+                        <td>{{topEarner.name}}</td>
+                        <td>{{topEarner.rides}}</td>
+                        <td>{{topEarner.earned}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    
+    <div class="top-registered-data dashboard-card">
+        <div class="dashboard-card-label">
+            <label>Top Spenders</label>
+        </div>
+        <div class="dashboard-card-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Name</th>
+                        <th>Rides</th>
+                        <th>Earned(INR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let topSpender of topSpenders">
+                        <td>{{topSpender.slNo}}</td>
+                        <td>{{topSpender.name}}</td>
+                        <td>{{topSpender.rides}}</td>
+                        <td>{{topSpender.earned}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="top-registered-div">
+    <div class="top-registered-data dashboard-card">
+        <div class="dashboard-card-label mb-2">
+            <label>Top Cancellation</label>
+        </div>
+        <div class="dashboard-card-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Name</th>
+                        <th>Reason</th>
+                        <th>Charge(INR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let topCancellation of topCancellations">
+                        <td>{{topCancellation.slNo}}</td>
+                        <td>{{topCancellation.name}}</td>
+                        <td>{{topCancellation.reason}}</td>
+                        <td>{{topCancellation.charge}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    <div class="top-registered-data dashboard-card">
+        <div class="dashboard-card-label">
+            <label>Top Complaints</label>
+        </div>
+        <div class="dashboard-card-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Name</th>
+                        <th>Issue</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let topComplaint of topComplaints">
+                        <td>{{topComplaint.slNo}}</td>
+                        <td>{{topComplaint.name}}</td>
+                        <td>{{topComplaint.issue}}</td>
+                        <td>{{topComplaint.status}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<!-- <div class="chartjs-container">
+    <canvas baseChart 
+        [datasets]="barChartData" 
+        [labels]="barChartLabels" 
+        [options]="barChartOptions"
+        [plugins]="barChartPlugins" 
+        [legend]="barChartLegend" 
+        [chartType]="barChartType">
+    </canvas>
+</div> -->
