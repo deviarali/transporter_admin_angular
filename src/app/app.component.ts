@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public flag: boolean = false;
+  /*public flag: boolean = false;
   
   public showMore: boolean = false;
   public showMoreGoods: boolean = false;
@@ -24,5 +24,5 @@ export class AppComponent {
 
   toggleSidebar = () => {
     this.flag = !this.flag;
-  }
+  }*/
 }

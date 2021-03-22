@@ -33,6 +33,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import {DataTablesModule} from 'angular-datatables';
 import {MatIconModule} from '@angular/material/icon';
 import { ChartsModule } from 'ng2-charts';
+import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -53,7 +54,10 @@ const routes: Routes = [
   {path: 'employee', component: EmployeeComponent},
   {path: 'create-driver', component: CreateDriverComponent},
   {path: 'employee-rights', component: EmployeeRightsComponent},
-  {path: '**', redirectTo: '/dashboard', pathMatch: 'full'}
+ 
+ 
+  {path: 'login', component: LoginComponent},
+  {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({
@@ -79,7 +83,8 @@ const routes: Routes = [
     EmployeeRightsComponent,
     CreateVehicleComponent,
     CreateCustomerComponent,
-    CreateDriverComponent
+    CreateDriverComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
