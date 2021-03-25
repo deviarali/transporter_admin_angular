@@ -21,6 +21,8 @@ export class CustomersComponent implements OnInit {
   // @ViewChild('closebutton') closebutton: ElementRef;
 
   public customers = [];
+  public oldCustomers = [];
+  public bannedCustomers = [];
   closeResult = '';
   errorMessage = '';
   alertMessage = '';
@@ -88,6 +90,8 @@ export class CustomersComponent implements OnInit {
     await this._customerService.getCustomers().subscribe((response) => {
       if (response['resultObject'].length > 0) {
         this.customers = response['resultObject'];
+        this.oldCustomers = response['resultObject'];
+        this.bannedCustomers = response['resultObject'];
       }
     });
   }

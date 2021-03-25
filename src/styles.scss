@@ -112,6 +112,8 @@ body {
   scrollbar-width: none;  /* Firefox */
 }
 
+
+
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
 }
@@ -10412,6 +10414,11 @@ select {
   background: #fff;
   box-shadow: 27px 27px 67px #cccccc, -27px -27px 67px #ffffff;
 }
+
+.box:hover {
+    box-shadow:  6px 6px 12px #5a5a5a, -6px -6px 12px #ffffff;
+}
+
 .close {
   color: red;
   border: none !important;

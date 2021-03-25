@@ -1,0 +1,82 @@
+<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+    <div class="sb-sidenav-menu">
+        <div class="nav">
+            <div class="sb-sidenav-menu-heading">Core</div>
+            <a class="nav-link" routerLink="/dashboard">
+                <div class="sb-nav-link-icon"><i class="fa fa-tachometer"></i></div>
+                Dashboard
+            </a>
+            <div class="sb-sidenav-menu-heading">Interface</div>
+            <a class="nav-link pointer" [class.collapsed]="!showMore" data-toggle="collapse"
+                data-target="#collapseLayouts" aria-expanded="true" aria-controls="collapseLayouts"
+                (click)="showMoreItems('users')">
+                <div class="sb-nav-link-icon"><i class="fa fa-users"></i></div>
+                Users
+                <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" [class.show]="showMore" id="collapseLayouts" aria-labelledby="headingOne"
+                data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" routerLink="/customers">Customers</a>
+                    <a class="nav-link" routerLink="/drivers">Drivers</a>
+                    <a class="nav-link" routerLink="/fleet-owners">Fleet Owners</a>
+                </nav>
+            </div>
+            <a class="nav-link pointer" [class.collapsed]="!showMoreGoods" data-toggle="collapse" data-target="#collapsePages"
+                aria-expanded="false" aria-controls="collapsePages" (click)="showMoreItems('goods')">
+                <div class="sb-nav-link-icon"><i class="fa fa-file-text"></i></div>
+                Goods details
+                <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" [class.show]="showMoreGoods" id="collapsePages" aria-labelledby="headingTwo"
+                data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" routerLink="/goods">Goods</a>
+                    <a class="nav-link" routerLink="/goods-type">Goods Type</a>
+                </nav>
+            </div>
+            <div class="sb-sidenav-menu-heading">Addons</div>
+            <a class="nav-link" routerLink="/vehicle-details">
+                <div class="sb-nav-link-icon"><i class="fa fa-bus"></i></div>
+                Vehicle details
+            </a>
+            <a class="nav-link" routerLink="/rate-details">
+                <div class="sb-nav-link-icon"><i class="fa fa-inr"></i></div>
+                Rate details
+            </a>
+            <a class="nav-link" routerLink="/incentives">
+                <div class="sb-nav-link-icon"><i class="fa fa-money"></i></div>
+                Incentives
+            </a>
+            <a class="nav-link" routerLink="/refer-and-earn">
+                <div class="sb-nav-link-icon"><i class="fa fa-user"></i></div>
+                Refer and Earn
+            </a>
+            <a class="nav-link" routerLink="/coupon">
+                <div class="sb-nav-link-icon"><i class="fa fa-gift"></i></div>
+                Coupon
+            </a>
+            <a class="nav-link" routerLink="/promotions">
+                <div class="sb-nav-link-icon"><i class="fa fa-product-hunt"></i></div>
+                Promotions
+            </a>
+            <a class="nav-link pointer" [class.collapsed]="!showMoreEmployees" data-toggle="collapse" data-target="#collapsePages"
+                aria-expanded="false" aria-controls="collapsePages" (click)="showMoreItems('employees')">
+                <div class="sb-nav-link-icon"><i class="fa fa-file-text"></i></div>
+                Employee details
+                <div class="sb-sidenav-collapse-arrow"><i class="fa fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" [class.show]="showMoreEmployees" id="collapsePages" aria-labelledby="headingTwo"
+                data-parent="#sidenavAccordion">
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" routerLink="/employee">Employee</a>
+                    <a class="nav-link" routerLink="/employee-rights">Employee rights</a>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="sb-sidenav-footer">
+        <div class="small">Logged in as:</div>
+        Admin
+    </div>
+</nav>

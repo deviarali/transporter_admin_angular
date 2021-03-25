@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatTabsModule } from '@angular/material/tabs';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MenubarComponent } from './components/menubar/menubar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardTotalReadingComponent } from './components/dashboard-total-reading/dashboard.total.reading.component';
 import { DashboardTopReadingComponent } from './components/dashboard-top-reading/dashboard.top.reading.component';
@@ -56,13 +57,14 @@ const routes: Routes = [
  
  
   {path: 'login', component: LoginComponent},
-  {path: '**', redirectTo: '/login', pathMatch: 'full'}
+  // {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    MenubarComponent,
     DashboardComponent,
     DashboardTotalReadingComponent,
     DashboardTopReadingComponent,
@@ -83,7 +85,8 @@ const routes: Routes = [
     CreateVehicleComponent,
     CreateCustomerComponent,
     CreateDriverComponent,
-    LoginComponent
+    LoginComponent,
+    MenubarComponent
   ],
   imports: [
     BrowserModule,

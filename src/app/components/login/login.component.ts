@@ -22,10 +22,19 @@ export class LoginComponent implements OnInit {
               private router: Router,
               private loginService: LoginService) { 
                 console.log('Dev login check');
+
   }
 
   ngOnInit(): void {
+
+    var userName = localStorage.getItem("userName");
+    if(userName != 'undefined' && userName != null && userName.length > 0) {
+      this.router.navigateByUrl('/dashboard');
+    }
+
     console.log('Dev login check');
+
+
     this.loginForm = this.formBuilder.group ({
       mobileNumber: [this.user.mobileNumber, ''],
       password: [this.user.password, '']
@@ -35,6 +44,8 @@ export class LoginComponent implements OnInit {
  
  
   onSubmit() : void {
+    // localStorage.setItem('userName', 'SHARAN');
+    // window.location.reload();
     this.loginService.loginValidate(this.loginForm.value).subscribe((response: UserVo) => {
       if(response['resultObject'] != null) {
         this.invalidLogin = false;
@@ -44,7 +55,9 @@ export class LoginComponent implements OnInit {
         this.userName = this.user.firstName;
         localStorage.setItem('loggedInUser', this.user.id.toString());
         localStorage.setItem('userName', this.userName);
-        this.router.navigateByUrl('/dashboard')
+        // this.router.navigateByUrl('/dashboard')
+        window.location.reload();
+
       } else {
         this.invalidLogin = true;
         this.loginSuccess = false;
@@ -52,5 +65,16 @@ export class LoginComponent implements OnInit {
          
       }
     })    
+  }
+
+  
+
+  isLoggedIn() {
+    var userName = localStorage.getItem("userName");
+    if(userName != 'undefined' && userName != null && userName.length > 0) {
+      return false;
+    }
+    // console.log(userName);
+    return true;
   }
 }
