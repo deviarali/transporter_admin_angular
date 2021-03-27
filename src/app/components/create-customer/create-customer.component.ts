@@ -20,13 +20,13 @@ export class CreateCustomerComponent implements OnInit {
     private _customerService: CustomerService,
     private _router: Router,) { }
 
-    user = null;
-    
-      
+  user = null;
+
+
   ngOnInit(): void {
 
     this.customer = history.state[0];
-    if( this.customer === undefined || this.customer === null) {
+    if (this.customer === undefined || this.customer === null) {
       this.customer = new Customer();
     }
 
@@ -54,16 +54,16 @@ export class CreateCustomerComponent implements OnInit {
       return;
     }
 
-     // console.log('Customer details::::', this.customerForm.value);
-     let customerToSave = this.customerForm.value;
-     if(customerToSave != null) {
-       if(customerToSave.id != null && customerToSave.id > 0) {
-         this.updateCustomer(customerToSave);
-       }
-       else {
-         this.saveCustomer(customerToSave);
-       }
-     }
+    // console.log('Customer details::::', this.customerForm.value);
+    let customerToSave = this.customerForm.value;
+    if (customerToSave != null) {
+      if (customerToSave.id != null && customerToSave.id > 0) {
+        this.updateCustomer(customerToSave);
+      }
+      else {
+        this.saveCustomer(customerToSave);
+      }
+    }
   }
 
 
@@ -109,6 +109,6 @@ export class CreateCustomerComponent implements OnInit {
   copyCustomer(id): void {
     alert('copy customer API call goes here');
     this._router.navigateByUrl("/customers")
-  }  
+  }
 
 }

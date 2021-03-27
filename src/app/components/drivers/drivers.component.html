@@ -10,11 +10,12 @@
             <!-- <a style="color: blue; cursor: pointer;" (click)="open(content)">Create Customer</a> -->
         </div>
     </div>
+    <div>
     <ul ngbNav #nav="ngbNav" class="nav-tabs">
         <li ngbNavItem>
             <a ngbNavLink>New Users</a>
-            <!-- <ng-template ngbNavContent> -->
-
+            <ng-template ngbNavContent>
+ 
                 <div class="data-table-div">
                     <table *ngIf="drivers.length > 0" class="table table-sm row-border hover" datatable
                         [dtOptions]="dtOptions">
@@ -53,7 +54,9 @@
                     </table>
                 </div>
 
-            <!-- </ng-template> -->
+            </ng-template>
         </li>
     </ul>
+</div>
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
 </div>

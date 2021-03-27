@@ -1,10 +1,7 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { NgbNavConfig } from '@ng-bootstrap/ng-bootstrap';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { DataTablesModule } from "angular-datatables";
 
 import { Customer } from 'src/app/models/customer';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -122,15 +119,15 @@ export class CustomersComponent implements OnInit {
 
     // console.log('Customer details::::', this.customerForm.value);
     let customerToSave = this.customerForm.value;
-    if(customerToSave != null) {
-      if(customerToSave.id != null && customerToSave.id.length > 0) {
+    if (customerToSave != null) {
+      if (customerToSave.id != null && customerToSave.id.length > 0) {
         this.updateCustomer(customerToSave);
       }
       else {
         this.saveCustomer(customerToSave);
       }
     }
-    
+
   }
 
   saveCustomer(customer) {
