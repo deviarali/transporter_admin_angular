@@ -24,4 +24,10 @@ export class DriverService {
   public getDrivers() {
     return this.httpClient.get(this.drivers);
   }
+
+  public getDriversForVehicleRegistry(userId){
+
+    return this.httpClient.get(`${this.baseUrl}/drivers/registerVehicle/`,userId);
+  }
+
 }

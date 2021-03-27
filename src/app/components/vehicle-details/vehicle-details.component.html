@@ -2,10 +2,57 @@
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item active">Vehicle details</li>
 </ol>
-
+ 
 <div class="d-flex justify-content-between">
     <div class="heading5">List of Vehicles</div>
     <div>
         <a routerLink="/vehicle-create">Create Vehicle</a>
     </div>
 </div>
+
+<ul ngbNav #nav="ngbNav" class="nav-tabs">
+    <li ngbNavItem>
+        <a ngbNavLink>Vehicle</a>
+        <ng-template ngbNavContent>
+
+            <div class="data-table-div">
+                <table *ngIf="vehicles.length > 0" class="table table-sm row-border hover" datatable
+                    [dtOptions]="dtOptions">
+                    <thead>
+                        <tr>
+                            <th>Register Id</th>
+                            <th>Name</th>
+                            <th>Mobile Number</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let vehicle of vehicles">
+                            <td>{{customer.user.id}}</td>
+                            <td>{{customer.user.firstName}} {{customer.user.lastName}}</td>
+                            <td>{{customer.user.mobileNumber}}</td>
+                            <td>{{customer.user.emailId}}</td>
+                            <td>{{customer.user.status == 1 ? 'Active' : 'In Active'}}</td>
+                            <td>
+                                <div class="db-buttons">
+                                    <a class="file-copy-btn" ngbTooltip="Copy" (click)="copyCustomer(customer.id)">
+                                        <mat-icon>file_copy</mat-icon>
+                                    </a>
+                                    <a class="edit-btn" ngbTooltip="Edit" [routerLink]="['/create-customer']"  [state]="[customer.user]">
+                                        <mat-icon>edit</mat-icon>
+                                    </a>
+                                    <a class="delete-btn" ngbTooltip="Delete" (click)="openConfirmModal(confirmModal, customer.id)">
+                                        <mat-icon>delete</mat-icon>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </ng-template>
+    </li>
+</ul>

@@ -1,16 +1,142 @@
 <h1 class="mt-4">Vehicle Details</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item"><a routerLink="/vehicle-details">Vehicle details</a></li>
-    <li class="breadcrumb-item active">Create</li>
+  <li class="breadcrumb-item">
+    <a routerLink="/vehicle-details">Vehicle details</a>
+  </li>
+  <li class="breadcrumb-item active">Create</li>
 </ol>
 
 <div class="d-flex justify-content-between">
-    <div class="heading5">Create Vehicle</div>
-    <div>
-        <a routerLink="/vehicle-details">Return to vehicles</a>
-    </div>
+  <div class="heading5">Create Vehicle</div>
+  <div>
+    <a routerLink="/vehicle-details">Return to vehicles</a>
+  </div>
 </div>
 
-<div>
-    
+<div class="form-div">
+  <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="col">
+        <div class="form-group">
+          <label>Vehicle Number</label>
+          <input
+            formControlName="vehicleNumber"
+            class="form-control mb-4"
+            [ngClass]="{ 'is-invalid': submitted && v.vehicleNumber.errors }"
+          />
+
+          <div
+            *ngIf="submitted && v.vehicleNumber.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="v.vehicleNumber.errors.required">
+              Vehicle Number is required
+            </div>
+            <div *ngIf="v.vehicleNumber.errors.minlength">
+              Vehicle Number must be 4 characters atleast
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label>Model</label>
+          <input
+            type="text"
+            formControlName="vehicleModel"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && v.vehicleModel.errors }"
+          />
+
+          <div
+            *ngIf="submitted && v.vehicleModel.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="v.vehicleNumber.errors.required">
+              Vehicle Model is required
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col">
+        <div class="form-group">
+          <label>Colour</label>
+          <input
+            type="text"
+            formControlName="vehicleColor"
+            class="form-control"
+          />
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group"> 
+
+          <label>Vehicle Type:</label>
+          <select formControlName="vehicleTypeVo"  pl class="form-control" >
+            <option  [ngValue]="null" [disabled]="true" >Select VehicleType </option>
+            <option *ngFor="let vType of vehicleTypeList"  value={{vType.id}}>
+              {{vType.vehicleName}}
+            </option>
+          </select>
+        </div> 
+          <!-- <label>Vehicle Type</label>
+          <input
+            type="text"
+            formControlName="vehicleType"  *ngFor="let vehice of vehicleType"
+            class="form-control" 
+            [ngClass]="{ 'is-invalid': submitted && v.vehicleType.errors }"
+          />
+          <div
+            *ngIf="submitted && v.vehicleType.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="v.vehicleType.errors.required">
+              Vehicle Type is required
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col">
+        <label>Driver:</label>
+        <select formControlName="drivers"   class="form-control">
+          <option [ngValue]="null" [disabled]="true">Select Driver</option>
+          <option *ngFor="let driver of driverList" value={{driver.id}}>
+            {{ driver.user.firstName}} {{ driver.user.mobileNumber }}
+          </option>
+        </select>
+      </div>
+
+      <div class="col">
+        <label>createdBy</label>
+        <input
+          type="text"
+          formControlName="createdBy"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && v.createdBy.errors }"
+        />
+        <div *ngIf="submitted && v.createdBy.errors" class="invalid-feedback">
+          <div *ngIf="v.createdBy.errors.required">
+            createdBy is required
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <p class="error">{{ errorMessage }}</p>
+    </div>
+    <div class="form-group" style="display: flex; justify-content: flex-end">
+      <button class="btn btn-primary">
+        {{ vehicle.vehicleNum != null ? "Update" : "Register" }}
+      </button>
+    </div>
+  </form>
+
+  <div></div>
 </div>
