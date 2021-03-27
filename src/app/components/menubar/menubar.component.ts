@@ -12,12 +12,13 @@ export class MenubarComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
   public flag: boolean = false;
   
   public showMore: boolean = false;
   public showMoreGoods: boolean = false;
   public showMoreEmployees: boolean = false;
+  public userName = localStorage.getItem("userName")
 
   showMoreItems = (text) => {
     if (text === 'users') {

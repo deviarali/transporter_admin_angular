@@ -58,7 +58,7 @@ const routes: Routes = [
   {path: 'employee-rights', component: EmployeeRightsComponent},
   {path: 'create-vehicle-type', component: CreateVehicleTypeComponent},
   {path: 'login', component: LoginComponent},
-  // {path: '**', redirectTo: '/login', pathMatch: 'full'}
+  {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({

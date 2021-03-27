@@ -14,8 +14,8 @@ export class DriverService {
   constructor(private httpClient: HttpClient,
     private customerService: CustomerService) { }
 
-  //private baseUrl: String = "http://139.59.42.229:8090/transporter/";
-  private baseUrl: String = "http://localhost:50005/";
+  private baseUrl: String = "http://139.59.42.229:8090/transporter/";
+  //private baseUrl: String = "http://localhost:50005/";
   private registerDriver : string = this.baseUrl + 'driver/registerDriver';
   private drivers : string = this.baseUrl + 'driver/getAllDrivers';
   private registerVehicleType = this.baseUrl + 'vehicleType/addVehicleType';
