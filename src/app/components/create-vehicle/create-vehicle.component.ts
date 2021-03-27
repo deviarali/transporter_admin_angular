@@ -10,18 +10,13 @@ import { VehicleTypeVo } from 'src/app/models/vehicle-type-vo';
 @Component({
   selector: 'app-create-vehicle',
   templateUrl: './create-vehicle.component.html',
-  styleUrls: ['./create-vehicle.component.scss']
+  styleUrls: ['./create-vehicle.component.scss'],
 })
 export class CreateVehicleComponent implements OnInit {
-
-
-
-
   vehicleForm: FormGroup;
   public vehicle: VehicleDetailsVo = new VehicleDetailsVo();
   public driverDetails: DriverDetailsVo = new DriverDetailsVo();
   public vehicleTypeVo: VehicleTypeVo = new VehicleTypeVo();
-
 
   public submitted: boolean = false;
   errorMessage = '';
@@ -30,67 +25,58 @@ export class CreateVehicleComponent implements OnInit {
 
   public vehicleTypeList: VehicleTypeVo[];
 
-  public loggedInUser = +localStorage.getItem("loggedInUser");
+  public loggedInUser = localStorage.getItem('loggedInUser');
 
-
-  constructor(private formBuilder: FormBuilder,
+  constructor(
+    private formBuilder: FormBuilder,
     private _vehicleService: VehicleService,
-    private _router: Router, private driverService: DriverService
-  ) { }
-
-
+    private _router: Router,
+    private driverService: DriverService
+  ) {}
 
   ngOnInit(): void {
-
-
     this.vehicle = history.state[0];
-    console.log("this.vehicle", this.vehicle);
+    console.log('this.vehicle', this.vehicle);
     if (this.vehicle === undefined || this.vehicle === null) {
       this.vehicle = new VehicleDetailsVo();
     }
 
     this.vehicleForm = this.formBuilder.group({
-
       vehicleColor: [this.vehicle.vehicleColor],
       vehicleModel: [this.vehicle.vehicleModel, Validators.required],
-      vehicleNumber: [this.vehicle.vehicleNum, [Validators.required, Validators.minLength(4)]],
+      vehicleNumber: [
+        this.vehicle.vehicleNum,
+        [Validators.required, Validators.minLength(4)],
+      ],
       vehicleTypeVo: [this.vehicle.vehicleTypeVo, [Validators.required]],
       createdBy: [this.vehicle.createdBy],
-      drivers: [this.vehicle.driverDetails, Validators.required]
-    })
+      drivers: [this.vehicle.driverDetails, Validators.required],
+    });
 
     this.getDriverForVehicle(this.loggedInUser);
     this.getVehicleTypes();
-
   }
 
-
-
-  get v() { return this.vehicleForm.controls; }
+  get v() {
+    return this.vehicleForm.controls;
+  }
 
   onSubmit(): void {
-
     this.submitted = true;
 
-    // if (this.vehicleForm.invalid) {
-    //   return;
-    // }
-
-    let id = this.vehicleForm.value.drivers;
-
-    //this.driverDetails.id=+this.vehicleForm.value.drivers;
+    if (this.vehicleForm.invalid) {
+      return;
+    }
 
     this.vehicle = this.vehicleForm.value;
 
-
     this.driverDetails.id = +this.vehicleForm.value.drivers;
     this.vehicle.driverDetails = this.driverDetails;
-  
 
     this.vehicleTypeVo.id = this.vehicleForm.value.vehicleTypeVo;
     this.vehicle.vehicleTypeVo = this.vehicleTypeVo;
 
-    this.vehicle.createdBy = "5";
+    this.vehicle.createdBy = this.loggedInUser;
 
     // console.log('Vehicle details:this.vehicleForm.value:::', this.vehicleForm.value);
 
@@ -99,84 +85,78 @@ export class CreateVehicleComponent implements OnInit {
     if (this.vehicle != null) {
       if (this.vehicle.vehicleNum != null && this.vehicle.vehicleNum != '') {
         this.updateVehivle(this.vehicle);
-      }
-      else {
+      } else {
         this.saveVehicle(this.vehicle);
       }
     }
-
   }
 
   updateVehivle(vehicle) {
+    this._vehicleService.updateVehicle(vehicle).subscribe(
+      (response) => {
+        //console.log(response);
+        if (response['resultObject'] === 'success') {
+          this._router.navigateByUrl('/vehicle-details');
+        } else {
+          //error block
 
-    this._vehicleService.updateVehicle(vehicle).subscribe(response => {
-      //console.log(response);
-      if (response["resultObject"] === "success") {
-        this._router.navigateByUrl("/vehicle-details")
-      }
-      else {
-        //error block
-
-        if (response["error"] != null) {
-          this.errorMessage = response["error"]["message"]
+          if (response['error'] != null) {
+            this.errorMessage = response['error']['message'];
+          }
         }
+      },
+      (error) => {
+        //error bloxk
       }
-    }, error => {
-      //error bloxk
-    })
-
+    );
   }
 
   saveVehicle(vehicle: VehicleDetailsVo) {
-
-    this._vehicleService.saveVehicle(vehicle).subscribe(response => {
-      console.log(response);
-      if (response["resultObject"] == "success") {
-        this._router.navigateByUrl("/vehivehicle-detailscle")
-      }
-
-      else {
-        if (response["error"] != null) {
-          this.errorMessage = response["error"]["message"];
+    this._vehicleService.saveVehicle(vehicle).subscribe(
+      (response) => {
+        console.log(response);
+        if (response['resultObject'] == 'success') {
+          this._router.navigateByUrl('/vehivehicle-detailscle');
+        } else {
+          if (response['error'] != null) {
+            this.errorMessage = response['error']['message'];
+          }
         }
+      },
+      (error) => {
+        //erro block
       }
-
-    }, error => {
-      //erro block
-    })
+    );
   }
 
   deleteVehicle(vehicleNumber): void {
     alert('delete customer API call goes here');
-    this._router.navigateByUrl("/vehicle")
+    this._router.navigateByUrl('/vehicle');
   }
 
   copyVehicle(vehicleNumber): void {
     alert('copy customer API call goes here');
-    this._router.navigateByUrl("/vehicle")
+    this._router.navigateByUrl('/vehicle');
   }
 
   getDriverForVehicle(userId) {
-    console.log("userId", userId);
+    console.log('userId', userId);
 
-    this._vehicleService.getDriversForVehicleRegistry(userId).subscribe(data => {
-      console.log("getDriverForVehicleby User Id", data['resultObject']);
+    this._vehicleService
+      .getDriversForVehicleRegistry(userId)
+      .subscribe((data) => {
+        console.log('getDriverForVehicleby User Id', data['resultObject']);
 
-      this.driverList = data['resultObject'];
+        this.driverList = data['resultObject'];
 
-      console.log("this.driverList", this.driverList);
-
-    })
+        console.log('this.driverList', this.driverList);
+      });
   }
 
   getVehicleTypes() {
-    this._vehicleService.getVehivleTypes().subscribe(data => {
-
-
+    this._vehicleService.getVehivleTypes().subscribe((data) => {
       this.vehicleTypeList = data['resultObject'];
-      console.log("Vehicle Types", this.vehicleTypeList);
-
-    })
-
+      console.log('Vehicle Types', this.vehicleTypeList);
+    });
   }
 }
