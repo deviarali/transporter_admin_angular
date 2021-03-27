@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-menubar',
+  templateUrl: './menubar.component.html',
+  styleUrls: ['./menubar.component.scss']
 })
-export class AppComponent {
-  
+export class MenubarComponent implements OnInit {
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void {
+  }
+
   public flag: boolean = false;
   
   public showMore: boolean = false;
@@ -27,12 +33,4 @@ export class AppComponent {
     this.flag = !this.flag;
   }
 
-  isLoggedIn() {
-    var userName = localStorage.getItem("userName");
-    if(userName != 'undefined' && userName != null && userName.length > 0) {
-      return true;
-    }
-    // console.log(userName);
-    return false;
-  }
 }

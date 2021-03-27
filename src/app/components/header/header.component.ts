@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   public flag: boolean = false;
   public isDropdownClicked: boolean = false;
 
-  constructor() { }
+  constructor(private router: Router,) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +28,9 @@ export class HeaderComponent implements OnInit {
     this.isDropdownClicked =  !this.isDropdownClicked;
   }
 
-
+logout() {
+  localStorage.setItem("userName", undefined);
+  this.router.navigateByUrl('/login');
+}
 
 }

@@ -6,6 +6,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { MatTabsModule } from '@angular/material/tabs';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
+import { MenubarComponent } from './components/menubar/menubar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DashboardTotalReadingComponent } from './components/dashboard-total-reading/dashboard.total.reading.component';
 import { DashboardTopReadingComponent } from './components/dashboard-top-reading/dashboard.top.reading.component';
@@ -57,13 +58,14 @@ const routes: Routes = [
   {path: 'employee-rights', component: EmployeeRightsComponent},
   {path: 'create-vehicle-type', component: CreateVehicleTypeComponent},
   {path: 'login', component: LoginComponent},
-  {path: '**', redirectTo: '/login', pathMatch: 'full'}
+  // {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    MenubarComponent,
     DashboardComponent,
     DashboardTotalReadingComponent,
     DashboardTopReadingComponent,
@@ -85,7 +87,8 @@ const routes: Routes = [
     CreateCustomerComponent,
     CreateDriverComponent,
     LoginComponent,
-    CreateVehicleTypeComponent
+    CreateVehicleTypeComponent,
+    MenubarComponent
   ],
   imports: [
     BrowserModule,
