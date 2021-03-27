@@ -7,7 +7,8 @@ import { UserVo } from '../models/user-vo';
 })
 export class LoginService {
 
-  private baseUrl: String = "http://localhost:50005/";
+  //private baseUrl: String = "http://localhost:50005/";
+  private baseUrl: String = "http://139.59.42.229:8090/transporter/";
   private login: string = this.baseUrl + 'login';
   constructor(private httpClient: HttpClient) { }
 

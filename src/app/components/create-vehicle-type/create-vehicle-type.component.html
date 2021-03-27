@@ -1,0 +1,81 @@
+<h1 class="mt-4">Vehicle Type</h1>
+<ol class="breadcrumb mb-1">
+    <li class="breadcrumb-item"><a routerLink="/vehicleTypes">Vehicle Types</a></li>
+    <li class="breadcrumb-item active">Vehicle Type Details</li>
+</ol>
+<div class="page-body box">
+    <div class="create-btn d-flex justify-content-end">
+        <div>
+            <a routerLink="/vehicleTypes">Vehicle types</a>
+        </div>
+    </div>
+
+    <div class="form-div">
+        <form [formGroup]="vehicleTypeForm" (ngSubmit)="onSubmit()">
+            <div class="alert alert-success" *ngIf='saveSuccess'>{{successMessage}}</div>
+            <div class="alert alert-success" *ngIf='error'>{{errorMessage}}</div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label>Vehicle name</label>
+                        <input type="text" formControlName="vehicleName" class="form-control mb-4"/>
+                    </div>
+                </div>
+            </div>
+             
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label>Size</label>
+                        <input type="text" formControlName="size" class="form-control" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Height</label>
+
+                        <input type="text" formControlName="height" class="form-control" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Width</label>
+                        <input type="text" formControlName="width" class="form-control"/>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Length</label>
+                        <input type="text" formControlName="length" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label>Minimum price</label>
+                        <input type="text" formControlName="price" class="form-control" />
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Per km</label>  
+                        <input type="text" formControlName="perKm" class="form-control mb-4"/>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Minimum Km</label>  
+                        <input type="text" formControlName="minKm" class="form-control mb-4"/>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <!-- <p class="error">{{errorMessage}}</p> -->
+            </div>
+            <div class="form-group" style="display: flex; justify-content: flex-end;">
+                <button class="btn btn-primary">Register</button>
+            </div>
+        </form>
+    </div>

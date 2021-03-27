@@ -1,3 +1,4 @@
+import { UserVo } from './user-vo';
 
 
 export class VehicleTypeVo {
@@ -10,10 +11,9 @@ export class VehicleTypeVo {
 	
 	vehicleName:string;
 
-	
 	price:number;
 
-	createdBy:string;
+	createdBy:UserVo;
 
 	selectedVehicleUrl:string;
 

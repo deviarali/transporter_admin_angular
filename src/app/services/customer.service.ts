@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Customer } from "../models/customer";
 import { DefaultService } from './default.service';
+import { CustomerDetailsVo } from '../models/customer-details-vo';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +31,7 @@ export class CustomerService extends DefaultService {
   }
 
   //get customer
-  public getCustomers () {
+  public getCustomers() {
     return this._httpClient.get(`${this.baseUrl}/customer/customers`);
   }
 }
