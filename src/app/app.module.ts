@@ -34,6 +34,8 @@ import {MatIconModule} from '@angular/material/icon';
 import { ChartsModule } from 'ng2-charts';
 import { LoginComponent } from './components/login/login.component';
 
+import { CreateVehicleTypeComponent } from './components/create-vehicle-type/create-vehicle-type.component';
+
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   // {path: 'dashboardd', component: DashboardTotalReadingComponent},
@@ -53,8 +55,7 @@ const routes: Routes = [
   {path: 'employee', component: EmployeeComponent},
   {path: 'create-driver', component: CreateDriverComponent},
   {path: 'employee-rights', component: EmployeeRightsComponent},
- 
- 
+  {path: 'create-vehicle-type', component: CreateVehicleTypeComponent},
   {path: 'login', component: LoginComponent},
   {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
@@ -83,7 +84,8 @@ const routes: Routes = [
     CreateVehicleComponent,
     CreateCustomerComponent,
     CreateDriverComponent,
-    LoginComponent
+    LoginComponent,
+    CreateVehicleTypeComponent
   ],
   imports: [
     BrowserModule,
