@@ -8,6 +8,8 @@ import { Route, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  userName = "";
+
   @Output()
   public toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
   
@@ -17,6 +19,7 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router,) { }
 
   ngOnInit(): void {
+    this.userName = localStorage.getItem("userName");
   }
 
   toggleNavigation = () => {
