@@ -1,0 +1,84 @@
+<h1 class="mt-5">Driver Details</h1>
+<ol class="breadcrumb mb-1">
+    <li class="breadcrumb-item"><a routerLink="/drivers">Drivers</a></li>
+    <li class="breadcrumb-item active">Driver Details</li>
+</ol>
+<div class="page-body box">
+    <div class="create-btn d-flex justify-content-end">
+        <div>
+            <a routerLink="/drivers">Return to drivers</a>
+        </div>
+    </div>
+
+    <div class="form-div">
+        <form [formGroup]="driverForm" (ngSubmit)="onSubmit()">
+            <div class="form-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label>First name</label>
+                        <input type="hidden" formControlName="id" class="form-control mb-4" />
+                        <input type="text" formControlName="firstName" class="form-control mb-4"
+                            [ngClass]="{'is-invalid': submitted && f.firstName.errors}" />
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                            <div *ngIf="f.firstName.errors.required">First name is required</div>
+                            <div *ngIf="f.firstName.errors.minLength">First name characters should be atleast 5
+                                characters</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                	<div class="form-group">
+                    	<label>Last Name</label>
+                    	<input type="text" formControlName="lastName" class="form-control" />
+                	</div>
+                </div>
+             </div>
+             
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" formControlName="emailId" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }" />
+                            <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+                                <div *ngIf="f.emailId.errors.required">Email is required</div>
+                                <div *ngIf="f.emailId.errors.email">Email must be a valid email address</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label>Mobile Number</label>
+                        <input type="text" formControlName="mobileNumber" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.mobileNumber.errors }" />
+                        <div *ngIf="submitted && f.mobileNumber.errors" class="invalid-feedback">
+                            <div *ngIf="f.mobileNumber.errors.required">Mobile number is required</div>
+                            <div *ngIf="f.mobileNumber.errors.minlength">Mobile number must be 10 digits</div>
+                            <div *ngIf="f.mobileNumber.errors.maxlength">Mobile number must be 10 digits</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="form-check-inline" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="gender" formControlName="gender"
+                                value="male">Male
+                        </label>
+                    </div>
+                    <div class="form-check-inline" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+                        <label class="form-check-label">
+                            <input type="radio" class="form-check-input" name="gender" formControlName="gender"
+                                value="female">Female
+                        </label>
+                    </div>
+                    <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                        <div *ngIf="f.gender.errors.required">Gender is required</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group" style="display: flex; justify-content: flex-end;">
+                <button class="btn btn-primary">{{(driverDetails.id != null ? 'Update' : 'Register')}}</button>
+            </div>
+        </form>
+    </div>
