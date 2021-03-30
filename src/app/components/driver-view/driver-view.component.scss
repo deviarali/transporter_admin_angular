@@ -1,0 +1,89 @@
+.driver-view {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    // border: 1px solid #777;
+    padding: 20px;
+
+    .box {
+        background: #fff;
+        box-shadow: 3px 3px 10px #a9a6a6, -3px -3px #ffffff;
+        
+    }
+
+    .div-title {
+        font-weight: 500;
+        font-size: 24px;
+        // padding: 20px;
+
+        label {
+            padding-bottom: 5px;
+            border-bottom: 3px solid  rgba(0, 123, 255, 0.65);
+        }
+    }
+
+    .personal-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        // border: 1px solid #777;
+        // padding: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .basic-info {
+        // border: 1px solid #777;
+        padding: 20px;
+        width: 600px;
+    }
+    .contacts-info {
+        // border: 1px solid #777;
+        padding: 20px;
+        width: 600px;
+    }
+    
+    .documents {
+        // border: 1px solid #777;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .rides {
+        // border: 1px solid #777;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    .complaints-info {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        // border: 1px solid #777;
+        // padding: 20px;
+        margin-bottom: 20px;
+    }
+    .rides-cancelled {
+        // border: 1px solid #777;
+        padding: 20px;
+        width: 600px;
+    }
+    .complaints {
+        // border: 1px solid #777;
+        padding: 20px;
+        width: 600px;
+    }
+    
+    .card-table {
+        width: 100%;
+    }
+    .card-table table {
+        width: 100%;
+    }
+    .card-table table thead tr th {
+        color: #8d9295;
+        font-weight: 300;
+    }
+    .card-table table tr {
+        border-bottom: 1px solid #dee2e6;
+        line-height: 2.5;
+    }
+
+}

@@ -1,0 +1,189 @@
+<h1 class="page-title mt-4">Driver - View</h1>
+<ol class="breadcrumb mb-1">
+    <li class="breadcrumb-item"><a routerLink="/drivers">Drivers</a></li>
+    <li class="breadcrumb-item active">Driver Details</li>
+</ol>
+
+<div class="driver-view">
+    <div class="personal-info">
+        <div class="basic-info box">
+            <div class="div-title">
+                <label>Basic Information</label>    
+            </div>
+            <div class="card-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Date Of Birth</th>
+                            <th>Age</th>
+                            <th>Experience</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td>{{driver.firstName}}</td>
+                            <td>{{driver.firstName}}</td>
+                            <td>{{driver.firstName}}</td>
+                            <td>{{driver.firstName}}</td>
+                            <td>{{driver.firstName}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+
+        <div class="contacts-info box">
+            <div class="div-title">
+                <label>Contact Information</label>    
+            </div>
+            <div class="card-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sl No.</th>
+                            <th>Name</th>
+                            <th>Rides</th>
+                            <th>Earned(INR)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td>1</td>
+                            <td>One</td>
+                            <td>One</td>
+                            <td>One</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="documents box">
+        <div class="div-title">
+            <label>Documents Details</label>    
+        </div>
+        <div class="card-table">
+            <table *ngIf="documents!= null && documents.length > 0">
+                <thead>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Document Type</th>
+                        <th>document #</th>
+                        <th>Document Picture</th>
+                        <th>Status</th>
+                        <th>Verified By</th>
+                        <th>Mobile</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let document of documents">
+                        <td>{{document.slNo}}</td>
+                        <td>{{document.documentType}}</td>
+                        <td>{{document.documentId}}</td>
+                        <td>
+                            <img *ngIf="document.documentPicture != null&& document.documentPicture.length > 0" alt="" src='{{document.documentPicture}}' width="100" height="50" />
+                        </td>
+                        <td>{{document.status}}</td>
+                        <td>{{document.verifiedBy}}</td>
+                        <td>{{document.mobile}}</td>
+                        <td>{{document.comments}}</td>
+                    </tr>
+
+
+                </tbody>
+            </table>
+        </div>
+</div>
+
+    <div class="rides box">
+        <div class="div-title">
+            <label>Rides</label>    
+        </div>
+        <div class="card-table">
+            <table *ngIf="rides!= null && rides.length > 0">
+                <thead>
+                    <tr>
+                        <th>Sl No.</th>
+                        <th>Date</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Spent(INR)</th>
+                        <th>Ratings</th>
+                        <th>Customero</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ride of rides">
+                        <td>1</td>
+                        <td>{{ride.rideDate}}</td>
+                        <td>{{ride.rideFrom}}</td>
+                        <td>{{ride.rideTo}}</td>
+                        <td>{{ride.spent}}</td>
+                        <td>{{ride.ratings}}</td>
+                        <td><a href="#">{{ride.customer.name}}</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
+
+    <div class="complaints-info">
+        <div class="rides-cancelled box">
+            <div class="div-title">
+                <label>Rides Cancelled</label>    
+            </div>
+            <div class="card-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sl No.</th>
+                            <th>Date</th>
+                            <th>Reason</th>
+                            <th>Spent(INR)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let rideCancel of ridesCancelled">
+                            <td>1</td>
+                            <td>{{rideCancel.date}}</td>
+                            <td>{{rideCancel.reason}}</td>
+                            <td>{{rideCancel.spent}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="complaints box">
+            <div class="div-title">
+                <label>Complaints Raised</label>    
+            </div>
+            <div class="card-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Sl No.</th>
+                            <th>Date</th>
+                            <th>Issue</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let complaint of complaints">
+                            <td>1</td>
+                            <td>{{complaint.date}}</td>
+                            <td>{{complaint.issue}}</td>
+                            <td>{{complaint.status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>

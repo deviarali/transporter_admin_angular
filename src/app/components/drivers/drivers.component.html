@@ -17,7 +17,7 @@
             <ng-template ngbNavContent>
  
                 <div class="data-table-div">
-                    <table *ngIf="drivers.length > 0" class="table table-sm row-border hover" datatable
+                    <table *ngIf="drivers != null && drivers.length > 0" class="table table-sm row-border hover" datatable
                         [dtOptions]="dtOptions">
                         <thead>
                             <tr>
@@ -38,6 +38,9 @@
                                 <td>{{driver.user.status == 1 ? 'Active' : 'In Active'}}</td>
                                 <td>
                                     <div class="db-buttons">
+                                        <a class="file-visibility-btn" ngbTooltip="View" [routerLink]="['/driver-view']" [queryParams]="{id: driver.user.id}"  [state]="[driver.user]"  >
+                                            <mat-icon>visibility</mat-icon>
+                                        </a>
                                         <a class="file-copy-btn" ngbTooltip="Copy" >
                                             <mat-icon>file_copy</mat-icon>
                                         </a>

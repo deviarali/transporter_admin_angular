@@ -36,6 +36,7 @@ import { ChartsModule } from 'ng2-charts';
 import { LoginComponent } from './components/login/login.component';
 
 import { CreateVehicleTypeComponent } from './components/create-vehicle-type/create-vehicle-type.component';
+import { DriverViewComponent } from './components/driver-view/driver-view.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -55,6 +56,7 @@ const routes: Routes = [
   {path: 'promotions', component: PromotionsComponent},
   {path: 'employee', component: EmployeeComponent},
   {path: 'create-driver', component: CreateDriverComponent},
+  {path: 'driver-view', component: DriverViewComponent},
   {path: 'employee-rights', component: EmployeeRightsComponent},
   {path: 'create-vehicle-type', component: CreateVehicleTypeComponent},
   {path: 'login', component: LoginComponent},
@@ -88,7 +90,8 @@ const routes: Routes = [
     CreateDriverComponent,
     LoginComponent,
     CreateVehicleTypeComponent,
-    MenubarComponent
+    MenubarComponent,
+    DriverViewComponent
   ],
   imports: [
     BrowserModule,

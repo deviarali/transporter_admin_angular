@@ -4585,6 +4585,11 @@ input[type=button].btn-block {
   margin-bottom: -1px;
 }
 
+.page-title {
+  font-weight: 500 !important;
+    font-size: 36px !important;
+}
+
 .breadcrumb {
   display: flex;
   flex-wrap: wrap;
@@ -10410,7 +10415,8 @@ select {
   margin-bottom: 2rem;
 }
 .box {
-  border-radius: 17px;
+  border: 1px solid #f8f8f8 !important;
+  border-radius: 15px;
   background: #fff;
   box-shadow: 27px 27px 50px #cccccc, -27px -27px 67px #ffffff50;
 }
