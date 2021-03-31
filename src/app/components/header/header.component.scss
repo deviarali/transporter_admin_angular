@@ -1,3 +1,41 @@
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile-name {
+    height: 50px;
+    width: auto;
+    min-width: 60px;
+    justify-content: center;
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    padding-left: 10px;
+    p {
+        margin: 0px;
+        width: auto;
+        padding: 0px;
+        color: #c7caccbf;
+        font-size: 0.7rem;
+    }
+    a {
+        width: auto;
+        padding: 0px;
+        margin-top: -5px;
+        color: #67a1ff;
+        font-size: 1rem;
+    }
+    a:hover {
+        background: none;
+    }
+}
+.profile-image {
+    border-radius: 40px;
+    width: 40px;
+    height: 40px;
+}
 p.dropdown-item:hover {
     background: none;
 }

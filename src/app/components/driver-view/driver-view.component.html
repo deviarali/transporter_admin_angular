@@ -67,7 +67,7 @@
             <label>Documents Details</label>    
         </div>
         <div class="card-table">
-            <table *ngIf="documents!= null && documents.length > 0">
+            <table *ngIf="documents!= null && documents.length > 0" class="table table-sm row-border hover" datatable [dtOptions]="documentsDTOptions">
                 <thead>
                     <tr>
                         <th>Sl No.</th>
@@ -105,7 +105,7 @@
             <label>Rides</label>    
         </div>
         <div class="card-table">
-            <table *ngIf="rides!= null && rides.length > 0">
+            <table *ngIf="rides!= null && rides.length > 0" class="table table-sm row-border hover" datatable [dtOptions]="ridesDTOptions">    
                 <thead>
                     <tr>
                         <th>Sl No.</th>
@@ -138,7 +138,7 @@
                 <label>Rides Cancelled</label>    
             </div>
             <div class="card-table">
-                <table>
+                <table *ngIf="ridesCancelled != null && ridesCancelled.length > 0" class="table table-sm row-border hover" datatable [dtOptions]="ridesCancelledDTOptions">
                     <thead>
                         <tr>
                             <th>Sl No.</th>
@@ -164,7 +164,7 @@
                 <label>Complaints Raised</label>    
             </div>
             <div class="card-table">
-                <table>
+                <table *ngIf="complaints != null && complaints.length > 0" class="table table-sm row-border hover" datatable [dtOptions]="complaintsDTOptions">
                     <thead>
                         <tr>
                             <th>Sl No.</th>

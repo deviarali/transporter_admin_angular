@@ -21,10 +21,43 @@ export class DriverViewComponent implements OnInit {
 
   driverId = null;
 
+  documentsDTOptions: any = {};
+  ridesDTOptions: any = {};
+  ridesCancelledDTOptions: any = {};
+  complaintsDTOptions: any = {};
+
   constructor(private route: ActivatedRoute,
     private driverService: DriverService) { }
 
   ngOnInit(): void {
+
+    this.documentsDTOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 8,
+      lengthMenu: [8, 16, 24, 32],
+      processing: true
+    };
+
+    this.ridesDTOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 8,
+      lengthMenu: [8, 16, 24, 32],
+      processing: true
+    };
+
+    this.ridesCancelledDTOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 8,
+      lengthMenu: [8, 16, 24, 32],
+      processing: true
+    };
+
+    this.complaintsDTOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 8,
+      lengthMenu: [8, 16, 24, 32],
+      processing: true
+    };
 
     this.route.queryParamMap
       .subscribe((params) => {
