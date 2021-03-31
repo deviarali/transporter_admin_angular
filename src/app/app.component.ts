@@ -1,17 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   
   public flag: boolean = false;
   
   public showMore: boolean = false;
   public showMoreGoods: boolean = false;
   public showMoreEmployees: boolean = false;
+
+  constructor(private router: Router,) { }
+
+  ngOnInit(): void {
+    let loggedIn = this.isLoggedIn();
+    if(!loggedIn) {
+      this.router.navigateByUrl('/login');
+    }
+  }
 
   showMoreItems = (text) => {
     if (text === 'users') {
@@ -28,6 +38,7 @@ export class AppComponent {
   }
 
   isLoggedIn() {
+    debugger;
     var userName = localStorage.getItem("userName");
     if(userName != 'undefined' && userName != null && userName.length > 0) {
       return true;
