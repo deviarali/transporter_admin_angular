@@ -50,6 +50,28 @@
                                         <a class="delete-btn" ngbTooltip="Delete" >
                                             <mat-icon>delete</mat-icon>
                                         </a>
+                                        <a *ngIf="driver.driverVerificationStatus=='completed'">
+                                            <section class="example-section">
+                                                <mat-slide-toggle
+                                                    class="example-margin"
+                                                    [color]="color"
+                                                    [checked]="true"
+                                                    [disabled]="disabled" (click)="verification(driver.id, 'assigned')">
+                                                InActivate
+                                                </mat-slide-toggle>
+                                            </section>
+                                        </a>
+                                        <a *ngIf="driver.driverVerificationStatus!='completed'">
+                                            <section class="example-section">
+                                                <mat-slide-toggle
+                                                    class="example-margin"
+                                                    [color]="color"
+                                                    [checked]="false"
+                                                    [disabled]="disabled" (click)="verification(driver.id, 'completed')">
+                                                Activate
+                                                </mat-slide-toggle>
+                                            </section>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>

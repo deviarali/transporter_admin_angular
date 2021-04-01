@@ -4,6 +4,9 @@ import { DriverDetailsVo } from '../models/driver-details-vo'
 import { CustomerService } from './customer.service';
 import { CustomerDetailsVo } from '../models/customer-details-vo';
 import { VehicleTypeVo } from '../models/vehicle-type-vo';
+import { Observable } from 'rxjs';
+import { rendererTypeName } from '@angular/compiler';
+import { retry, delayWhen } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,10 +18,9 @@ export class DriverService {
     private customerService: CustomerService) { }
 
   private baseUrl: String = "http://139.59.42.229:8090/transporter/";
-  //private baseUrl: String = "http://localhost:50005/";
   private registerDriver : string = this.baseUrl + 'driver/registerDriver';
   private drivers : string = this.baseUrl + 'driver/getAllDrivers';
-  private registerVehicleType = this.baseUrl + 'vehicleType/addVehicleType';
+  private updateVerification = this.baseUrl + 'driver/updateverificationstatus';  
 
   public saveDriver(driverDetailsVo : DriverDetailsVo) {
     console.log('Save Driver details ', driverDetailsVo);
@@ -29,22 +31,19 @@ export class DriverService {
   }
 
   public getDrivers() {
-    return this.httpClient.get(this.drivers);
+    return this.httpClient.get(this.drivers).pipe(
+      retry(5)
+    );
   }
 
-  
-
-  public saveVehicleType(vehicleType : VehicleTypeVo) {
-    
-    return this.httpClient.post(this.registerVehicleType, vehicleType);
+  public updateVerificationStatus(id: Number, status: string) {
+    return this.httpClient.put(this.updateVerification+'?driverId='+id+'&status='+status, null);
   }
 
   public getDriversForVehicleRegistry(userId){
 
     return this.httpClient.get(`${this.baseUrl}/drivers/registerVehicle/`,userId);
   }
-
-  
 
   public findDriverDocuments(driverId){
 

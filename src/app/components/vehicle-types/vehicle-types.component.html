@@ -1,0 +1,68 @@
+<h1 class="mt-4">Vehicle Types</h1>
+<ol class="breadcrumb mb-1">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+    <li class="breadcrumb-item active">Vehicle Types</li>
+</ol>
+<div class="page-body box">
+    <div class="create-btn d-flex justify-content-end">
+        <div>
+            <a routerLink="/create-vehicle-type">Create Vehicle types</a>
+            <!-- <a style="color: blue; cursor: pointer;" (click)="open(content)">Create Customer</a> -->
+        </div>
+    </div>
+    <div>
+    <ul ngbNav #nav="ngbNav" class="nav-tabs">
+        <li ngbNavItem>
+            <a ngbNavLink>Vehcle type</a>
+            <ng-template ngbNavContent>
+ 
+                <div class="data-table-div">
+                    <table *ngIf="vehicleTypes?.length > 0" class="table table-sm row-border hover" datatable
+                        [dtOptions]="dtOptions">
+                        <thead>
+                            <tr>
+                                <th>Vehicle name</th>
+                                <th>Size</th>
+                                <th>Height</th>
+                                <th>Width</th>
+                                <th>Length</th>
+                                <th>Minimum Price</th>
+                                <th>Per Km</th>
+                                <th>Min. Km</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let vehicleType of vehicleTypes">
+                                <td>{{vehicleType.vehicleName}}</td>
+                                <td>{{vehicleType.size}}</td>
+                                <td>{{vehicleType.height}}</td>
+                                <td>{{vehicleType.width}}</td>
+                                <td>{{vehicleType.length}}</td>
+                                <td>{{vehicleType.price | currency : 'INR'}}</td>
+                                <td>{{vehicleType.perKm | currency : 'INR'}}</td>
+                                <td>{{vehicleType.minKm}}</td>
+                                <td>
+                                    <div class="db-buttons">
+                                        <a class="file-copy-btn" ngbTooltip="Copy" >
+                                            <mat-icon>file_copy</mat-icon>
+                                        </a>
+
+                                        <a class="edit-btn" ngbTooltip="Edit" [routerLink]="['/create-vehicle-type']" [state]="[vehicleType]">
+                                            <mat-icon>edit</mat-icon>
+                                        </a>
+                                        <a class="delete-btn" ngbTooltip="Delete" >
+                                            <mat-icon>delete</mat-icon>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </ng-template>
+        </li>
+    </ul>
+</div>
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

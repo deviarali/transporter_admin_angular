@@ -36,7 +36,7 @@ export class CreateDriverComponent implements OnInit {
     this.driverForm = this.formBuilder.group({
       id: [this.driverDetails.id],
       firstName: [this.driverDetails.user.firstName, [Validators.required, Validators.minLength(5), Validators.maxLength(15)]],
-      lastName: [this.driverDetails.user.lastName],
+      lastName: [this.driverDetails.user.lastName, [Validators.pattern('[A-Za-z]*')]],
       
       mobileNumber: ['', [Validators.required, Validators.maxLength(10)]],
       emailId: ['', [Validators.email]],
@@ -52,13 +52,12 @@ export class CreateDriverComponent implements OnInit {
 
   onSubmit(): void {
     this.submitted = true;
-
     if (this.driverForm.invalid) {
       return;
     }
     this.driverDetails = this.driverForm.value;
-    // this.user.firstName=this.driverForm.value.firstName;
-    // this.user.lastName=this.driverForm.value.lastName;
+    this.user.firstName=this.driverForm.value.firstName;
+    this.user.lastName=this.driverForm.value.lastName;
     this.user.mobileNumber=this.driverForm.value.mobileNumber;
     this.user.emailId=this.driverForm.value.emailId;
     this.user.gender=this.driverForm.value.gender;
@@ -80,7 +79,7 @@ export class CreateDriverComponent implements OnInit {
     this.driverService.saveDriver(this.driverDetails).subscribe(response => {
       if (response["resultObject"] === "success") {
         this.saveSuccess = true;
-        this.router.navigateByUrl("/drivers");
+        this.router.navigateByUrl("/vehicle-create");
       } else {
         if (response["error"] != null) {
           this.error = true;

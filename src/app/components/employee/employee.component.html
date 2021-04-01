@@ -1,4 +1,91 @@
-<h1 class="mt-4">Employee</h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item active">Employee</li>
+<h1 class="mt-4">Employees</h1>
+<ol class="breadcrumb mb-1">
+    <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+    <li class="breadcrumb-item active">Employees</li>
 </ol>
+<div class="page-body box">
+    <div class="create-btn d-flex justify-content-end">
+        <div>
+            <a routerLink="/create-employee">Create Employee</a>
+            <!-- <a style="color: blue; cursor: pointer;" (click)="open(content)">Create Customer</a> -->
+        </div>
+    </div>
+    <div>
+    <ul ngbNav #nav="ngbNav" class="nav-tabs">
+        <li ngbNavItem>
+            <a ngbNavLink>New Employees</a>
+            <ng-template ngbNavContent>
+ 
+                <div class="data-table-div">
+                    <table class="table table-sm row-border hover" datatable
+                    [dtOptions]="dtOptions">
+                        <thead>
+                            <tr>
+                                <th>User Id</th>
+                                <th>First Name</th>
+                                <th>Mobile Number</th>
+                                <th>Email</th>
+                                <th>State</th>
+                                <th>City</th>
+                                <th>Street</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngIf='users != null'>
+                            <tr *ngFor="let user of users">
+                                <td>{{user.id}}</td>
+                                <td>{{user.firstName}} {{user.lastName}}</td>
+                                <td>{{user.mobileNumber}}</td>
+                                <td>{{user.emailId}}</td>
+                                <td>{{user.internalUserDetails.addressState}}</td>
+                                <td>{{user.internalUserDetails.addressCity}}</td>
+                                <td>{{user.internalUserDetails.addressStreet}}</td>
+                                <td>{{user.internalUserDetails.addressState}}</td>
+                                <td>{{user.role}}</td>
+                                <td>
+                                    <div class="db-buttons">
+                                        <a class="file-copy-btn" ngbTooltip="Copy" >
+                                            <mat-icon>file_copy</mat-icon>
+                                        </a>
+                                        <a class="edit-btn" ngbTooltip="Edit"  >
+                                            <mat-icon>edit</mat-icon>
+                                        </a>
+                                        <a class="delete-btn" ngbTooltip="Delete" >
+                                            <mat-icon>delete</mat-icon>
+                                        </a>
+                                        <a *ngIf="driver.driverVerificationStatus=='completed'">
+                                            <section class="example-section">
+                                                <mat-slide-toggle
+                                                    class="example-margin"
+                                                    [color]="color"
+                                                    [checked]="true"
+                                                    [disabled]="disabled" (click)="verification(driver.id, 'assigned')">
+                                                InActivate
+                                                </mat-slide-toggle>
+                                            </section>
+                                        </a>
+                                        <a *ngIf="driver.driverVerificationStatus!='completed'">
+                                            <section class="example-section">
+                                                <mat-slide-toggle
+                                                    class="example-margin"
+                                                    [color]="color"
+                                                    [checked]="false"
+                                                    [disabled]="disabled" (click)="verification(driver.id, 'completed')">
+                                                Activate
+                                                </mat-slide-toggle>
+                                            </section>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </ng-template>
+        </li>
+    </ul>
+</div>
+<div [ngbNavOutlet]="nav" class="mt-2"></div>
+<div *ngIf='nodata != null' align='center'>{{nodata}}</div>
+</div>

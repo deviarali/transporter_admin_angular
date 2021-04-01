@@ -116,7 +116,7 @@ export class CreateVehicleComponent implements OnInit {
       (response) => {
         console.log(response);
         if (response['resultObject'] == 'success') {
-          this._router.navigateByUrl('/vehivehicle-detailscle');
+          this._router.navigateByUrl('/vehicle-details');
         } else {
           if (response['error'] != null) {
             this.errorMessage = response['error']['message'];

@@ -9,7 +9,7 @@ export class UserVo {
 
     id:number;
 
-	createdBy:string;
+	createdBy:Number;
 
 	createdOn:Date;
 

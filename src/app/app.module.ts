@@ -37,6 +37,9 @@ import { LoginComponent } from './components/login/login.component';
 
 import { CreateVehicleTypeComponent } from './components/create-vehicle-type/create-vehicle-type.component';
 import { DriverViewComponent } from './components/driver-view/driver-view.component';
+import { VehicleTypesComponent } from './components/vehicle-types/vehicle-types.component';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { CreateEmployeeComponent } from './components/create-employee/create-employee.component';
 
 const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
@@ -55,11 +58,13 @@ const routes: Routes = [
   {path: 'coupon', component: CouponComponent},
   {path: 'promotions', component: PromotionsComponent},
   {path: 'employee', component: EmployeeComponent},
+  {path: 'create-employee', component: CreateEmployeeComponent},
   {path: 'create-driver', component: CreateDriverComponent},
   {path: 'driver-view', component: DriverViewComponent},
   {path: 'employee-rights', component: EmployeeRightsComponent},
   {path: 'create-vehicle-type', component: CreateVehicleTypeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'vehicle-types', component: VehicleTypesComponent},
   {path: '**', redirectTo: '/login', pathMatch: 'full'}
 ];
 
@@ -91,7 +96,9 @@ const routes: Routes = [
     LoginComponent,
     CreateVehicleTypeComponent,
     MenubarComponent,
-    DriverViewComponent
+    DriverViewComponent,
+    VehicleTypesComponent,
+    CreateEmployeeComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +111,8 @@ const routes: Routes = [
     AngularMaterialModule,
     DataTablesModule,
     MatIconModule,
-    ChartsModule
+    ChartsModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,17 +1,17 @@
-<h1 class="mt-4">Driver Details</h1>
+<h1 class="mt-4">Employee Details</h1>
 <ol class="breadcrumb mb-1">
-    <li class="breadcrumb-item"><a routerLink="/drivers">Drivers</a></li>
-    <li class="breadcrumb-item active">Driver Details</li>
+    <li class="breadcrumb-item"><a routerLink="/employee">Employees</a></li>
+    <li class="breadcrumb-item active">Employee Details</li>
 </ol>
 <div class="page-body box">
     <div class="create-btn d-flex justify-content-end">
         <div>
-            <a routerLink="/drivers">Return to drivers</a>
+            <a routerLink="/employee">Return to Employees</a>
         </div>
     </div>
 
     <div class="form-div">
-        <form [formGroup]="driverForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
             <div class="alert alert-success" *ngIf='saveSuccess'>{{successMessage}}</div>
             <div class="alert alert-success" *ngIf='error'>{{errorMessage}}</div>
             <div class="form-row">
@@ -31,14 +31,9 @@
                 <div class="col">
                 	<div class="form-group">
                     	<label>Last Name</label>
-                    	<input type="text" formControlName="lastName" class="form-control" [ngClass]="{'is-invalid': submitted && f.firstName.errors}" />
-                        
-                        
-                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                            <div *ngIf="f.lastName.errors.pattern">Enter oly text</div>
-                        </div>
-                            
-                	</div>
+                    	<input type="text" formControlName="lastName" class="form-control"/>
+                    </div>
+                    
                 </div>
             </div>
              
@@ -117,11 +112,20 @@
                 	</div>
                 </div>
             </div>
+            <div class="form-row">
+                <div class="col">
+                    <label>Role</label>
+                    <select formControlName="roles" class="form-control">
+                        <option [ngValue]="null" [disabled]="true">Select Role</option>
+                        <option *ngFor="let roles of rolesList" value={{roles.id}}>{{roles.roleName}}</option>
+                    </select>
+                </div>
+            </div>
             <div class="form-group">
                 <p class="error">{{errorMessage}}</p>
             </div>
             <div class="form-group" style="display: flex; justify-content: flex-end;">
-                <button class="btn btn-primary">{{(driverDetails.id != null ? 'Update' : 'Register')}}</button>
+                <button class="btn btn-primary">{{(internalUserDetails.id != null ? 'Update' : 'Register')}}</button>
             </div>
         </form>
     </div>

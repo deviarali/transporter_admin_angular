@@ -5,7 +5,7 @@ import { DriverDetailsVo } from 'src/app/models/driver-details-vo';
 import { NgbNavConfig } from '@ng-bootstrap/ng-bootstrap';
 import { DataTablesModule } from "angular-datatables";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drivers',
@@ -15,8 +15,9 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class DriversComponent implements OnInit {
 
   constructor(
-    private driverService: DriverService
-  ) { }
+    private router: Router,
+    private driverService: DriverService,
+    ) { }
 
   drivers: DriverDetailsVo[];
   dtOptions: any = {};
@@ -43,6 +44,18 @@ export class DriversComponent implements OnInit {
         this.drivers = response['resultObject'];
       }
     })
+  }
+
+  verification(id: Number, status: string): void {
+    //let status= "completed";
+    this.driverService.updateVerificationStatus(id, status).subscribe( response =>{
+      if(response['resultObject'] != null && response['resultObject'] != 0) {
+        //this.router.navigateByUrl("/drivers");
+        window.location.reload();
+      }
+    })
+    // console.log('activate');
+    //alert('activate');
   }
 
 }

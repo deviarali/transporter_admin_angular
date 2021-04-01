@@ -22,5 +22,7 @@ export class InternalUserDetailsVo {
 
 	internalUserroleMaster:InternalUserRoleMasterVo;
 
+	internalUserRole: Number;
+
 	user:UserVo;
 }
