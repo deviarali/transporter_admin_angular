@@ -27,7 +27,7 @@ export class CustomerService extends DefaultService {
     const user = {
       user: customer
     }
-    return this._httpClient.put(`${this.baseUrl}/customer/updateCustomer`, user);
+    return this._httpClient.patch(`${this.baseUrl}/customer/updateCustomer`, user);
   }
 
   //get customer
