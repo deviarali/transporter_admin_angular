@@ -11,6 +11,6 @@ export class VehicleDetailsService extends DefaultService
   constructor(private _httpClient: HttpClient) { super(); }
 
   public getVehicles() {
-    return this._httpClient.get(`${this.baseUrl}/customer/customers`);
+    return this._httpClient.get(`${this.baseUrl}/vehicles`);
   }
 }

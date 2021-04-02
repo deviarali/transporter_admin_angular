@@ -41,6 +41,8 @@ export class CreateCustomerComponent implements OnInit {
       emailId: [this.customer.emailId, [Validators.required,
       Validators.email]],
       gender: [this.customer.gender, Validators.required],
+      city:[Validators.required],
+      state:[Validators.required]
     })
   }
 

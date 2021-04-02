@@ -70,13 +70,17 @@
             <div class="form-row">
                 <div class="col">
                     <div class="form-group">
-                        <label>Gender</label>
+                        <label>Gender</label><br>
+                        
                         <div class="form-check-inline" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
                             <label class="form-check-label">
                                 <input type="radio" class="form-check-input" name="gender" formControlName="gender"
                                     value="male">Male
                             </label>
                         </div>
+
+
+
                         <div class="form-check-inline" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
                             <label class="form-check-label">
                                 <input type="radio" class="form-check-input" name="gender" formControlName="gender"

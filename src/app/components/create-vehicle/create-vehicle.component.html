@@ -24,7 +24,6 @@
             class="form-control mb-4"
             [ngClass]="{ 'is-invalid': submitted && v.vehicleNumber.errors }"
           />
-
           <div
             *ngIf="submitted && v.vehicleNumber.errors"
             class="invalid-feedback"
@@ -32,6 +31,7 @@
             <div *ngIf="v.vehicleNumber.errors.required">
               Vehicle Number is required
             </div>
+
             <div *ngIf="v.vehicleNumber.errors.minlength">
               Vehicle Number must be 4 characters atleast
             </div>
@@ -73,59 +73,55 @@
       </div>
 
       <div class="col">
-        <div class="form-group"> 
-
+        <div class="form-group">
           <label>Vehicle Type:</label>
-          <select formControlName="vehicleTypeVo"  pl class="form-control" >
-            <option  [ngValue]="null" [disabled]="true" >Select VehicleType </option>
-            <option *ngFor="let vType of vehicleTypeList"  value={{vType.id}}>
-              {{vType.vehicleName}}
+          <select
+            formControlName="vehicleTypeVo"
+            pl
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && v.vehicleTypeVo.errors }"
+          >
+            <option [ngValue]="null" [disabled]="true">
+              Select VehicleType
+            </option>
+            <option
+              *ngFor="let vType of vehicleTypeList"
+              value="{{ vType.id }}"
+            >
+              {{ vType.vehicleName }}
             </option>
           </select>
-        </div> 
-          <!-- <label>Vehicle Type</label>
-          <input
-            type="text"
-            formControlName="vehicleType"  *ngFor="let vehice of vehicleType"
-            class="form-control" 
-            [ngClass]="{ 'is-invalid': submitted && v.vehicleType.errors }"
-          />
           <div
-            *ngIf="submitted && v.vehicleType.errors"
+            *ngIf="submitted && v.vehicleTypeVo.errors"
             class="invalid-feedback"
           >
-            <div *ngIf="v.vehicleType.errors.required">
-              Vehicle Type is required
+            <div *ngIf="v.vehicleTypeVo.errors.required">
+              Vehicle Number is required
             </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
     <div class="form-row">
       <div class="col">
         <label>Driver:</label>
-        <select formControlName="drivers"   class="form-control">
+        <select
+          formControlName="drivers"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && v.drivers.errors }"
+        >
           <option [ngValue]="null" [disabled]="true">Select Driver</option>
-          <option *ngFor="let driver of driverList" value={{driver.id}}>
-            {{ driver.user.firstName}} {{ driver.user.mobileNumber }}
+          <option *ngFor="let driver of driverList" value="{{ driver.id }}">
+            {{ driver.user.firstName }} {{ driver.user.mobileNumber }}
           </option>
         </select>
-      </div>
-
-      <div class="col">
-        <label>createdBy</label>
-        <input
-          type="text"
-          formControlName="createdBy"
-          class="form-control"
-          [ngClass]="{ 'is-invalid': submitted && v.createdBy.errors }"
-        />
-        <div *ngIf="submitted && v.createdBy.errors" class="invalid-feedback">
-          <div *ngIf="v.createdBy.errors.required">
-            createdBy is required
+        <div *ngIf="submitted && v.drivers.errors" class="invalid-feedback">
+          <div *ngIf="v.drivers.errors.required">
+            Vehicle Number is required
           </div>
         </div>
       </div>
+      <div class="col"></div>
     </div>
 
     <div class="form-group">

@@ -32,7 +32,7 @@ export class CreateVehicleComponent implements OnInit {
     private _vehicleService: VehicleService,
     private _router: Router,
     private driverService: DriverService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.vehicle = history.state[0];
@@ -44,10 +44,7 @@ export class CreateVehicleComponent implements OnInit {
     this.vehicleForm = this.formBuilder.group({
       vehicleColor: [this.vehicle.vehicleColor],
       vehicleModel: [this.vehicle.vehicleModel, Validators.required],
-      vehicleNumber: [
-        this.vehicle.vehicleNum,
-        [Validators.required, Validators.minLength(4)],
-      ],
+      vehicleNumber: [this.vehicle.vehicleNum, [Validators.required, Validators.minLength(4)],],
       vehicleTypeVo: [this.vehicle.vehicleTypeVo, [Validators.required]],
       createdBy: [this.vehicle.createdBy],
       drivers: [this.vehicle.driverDetails, Validators.required],
@@ -69,17 +66,12 @@ export class CreateVehicleComponent implements OnInit {
     }
 
     this.vehicle = this.vehicleForm.value;
-
+    this.vehicle.vehicleNum = this.vehicleForm.value.vehicleNumber;
     this.driverDetails.id = +this.vehicleForm.value.drivers;
     this.vehicle.driverDetails = this.driverDetails;
-
     this.vehicleTypeVo.id = this.vehicleForm.value.vehicleTypeVo;
     this.vehicle.vehicleTypeVo = this.vehicleTypeVo;
-
     this.vehicle.createdBy = this.loggedInUser;
-
-    // console.log('Vehicle details:this.vehicleForm.value:::', this.vehicleForm.value);
-
     console.log('Vehicle details::this.PostAPIDetails::', this.vehicle);
 
     if (this.vehicle != null) {
